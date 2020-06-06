@@ -12,27 +12,19 @@ def cli():
 
 @cli.command()
 def clear():
-    """Clears the entire screen."""
+    """This will clear the entire screen """
     click.clear()
 
-@cli.command()
-def colordemo(app):
-    """Demonstrates ANSI color support."""
-    # for color in "red", "green", "blue":
-    click.echo(click.style(f"{app} is ready to go {color}", fg=color))
-    # click.echo(click.style(f"I am background colored {color}", bg=color))
 
 
-
-@cli.command(help='😄 Simple project creator')
-@click.option('--app','-a',type=click.Choice(['fastapi', 'flask','django'], case_sensitive=True), prompt='Projects',show_default=True,confirmation_prompt="confirm",default='fastapi',required=True, help='The app name')
+@cli.command(help='😄 simple boilerplate ready for development')
+@click.option('--app','-a',type=click.Choice(['fastapi', 'flask','django'], case_sensitive=True), prompt='Choose one of the application',show_default=True,confirmation_prompt="confirm",default='fastapi',required=True, help='the app name')
 @click.option('--version',"-v",metavar='  version of program', is_flag=False, callback=print_version,
               expose_value=False, is_eager=True)
-@click.option('--name',"-n",metavar='     the name of yor app',prompt='Name for your project',show_default=True,default='myproject',required=True, help='The app name')
+@click.option('--name',"-n",metavar='     the name of yor app',prompt='Name for your app',show_default=True,default='myproject',required=True, help='the app name')
 
-def starting(app,name,count=5000):
+def starting(app,name,count=4000):
     click.echo(click.style('Starting app %s at directory %s!' % (app,name), fg='green'))
-    # click.echo(click.style('Starting name %s!' % name,fg='green'))
     click.progressbar(iterable="8", length=None, label=None, show_eta=True, show_percent=None, show_pos=False, item_show_func=None, fill_char='#', empty_char='-', bar_template='%(label)s [%(bar)s] %(info)s', info_sep=' ', width=36, file=None, color=None)
     items = range(count)
     def process_slowly(item):
@@ -52,7 +44,7 @@ def starting(app,name,count=5000):
     execution(app,name)
     click.echo(click.style('Clearing!', blink=True,fg="red"))
 
-    time.sleep(3)
+    time.sleep(5)
     clear()
 
 

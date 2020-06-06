@@ -46,7 +46,7 @@ class Operation:
         ]
 
         sys.stdout.write("\n".join(text))
-        sys.exit(1)
+        # sys.exit(1)
 
 
     def execute(self):
