@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="startapp",
-    version="0.1.3.6",
+    version="0.1.3.8e",
     include_package_data=True,
     packages=find_packages(),
     author="",
@@ -24,7 +24,7 @@ setup(
     },
     entry_points="""
         [console_scripts]
-        startapp=takeaway.script.order:starting
+        startapp=startapp.takeaway.script.order:starting
     """,
     # entry_points={
     #     'console_scripts': [
