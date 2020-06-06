@@ -1,5 +1,5 @@
-from setuptools import setup
-version = __import__("takeawy").__version__
+from setuptools import setup, find_packages
+# version = __import__("takeaway").__version__
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
@@ -9,7 +9,8 @@ setup(
     version="0.0.1",
     py_modules=["colors"],
     include_package_data=True,
-    version=version,
+    # version=version,
+    packages=find_packages(),
     author_email="",
     description="Simple startapp for flask dajngo and fastapo",
     long_description=long_description,

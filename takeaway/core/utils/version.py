@@ -1,5 +1,6 @@
 import  sys
-
+import  os
+sys.path.insert(0, os.path.abspath('..'))
 
 def print_version(ctx, param, value):
     if not value or ctx.resilient_parsing:
