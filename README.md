@@ -7,7 +7,7 @@
 
 simple boilerplate ready for development 
 
-## notes
+## Notes
 - Currently supported for  frameworks:  FastAPi, Flask, Django
 
 
@@ -18,7 +18,12 @@ simple boilerplate ready for development
 ```
 
 
+### Guide
 
+```bash
+startapp 
+
+```
 
 
 # Contributing
