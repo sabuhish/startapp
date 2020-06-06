@@ -6,8 +6,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="startapp",
-    version="0.1.3",
-    py_modules=["startapp"],
+    version="0.1.3.6",
     include_package_data=True,
     packages=find_packages(),
     author="",
@@ -16,7 +15,7 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     license='MIT',
-    url="https://github.com/marlin-dev/",
+    url="https://github.com/marlin-dev/startapp",
     install_requires=[
         "click"
     ],
@@ -25,7 +24,7 @@ setup(
     },
     entry_points="""
         [console_scripts]
-        startapp=takeaway.script.order:cli
+        startapp=takeaway.script.order:starting
     """,
     # entry_points={
     #     'console_scripts': [
