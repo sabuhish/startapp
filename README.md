@@ -14,7 +14,7 @@ simple boilerplate ready for development
 ### Installation ###
 
 ```sh
- $ pip install startapp
+ $ sudo pip3 install startapp
 ```
 
 

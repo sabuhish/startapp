@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="startapp",
-    version="0.1.4.28",
+    version="0.1.4.30",
     include_package_data=True,
     packages=['takeaway', 'takeaway.script','takeaway.core.utils','takeaway.core','takeaway.settings','takeaway.controllers','takeaway.settings.flask','takeaway.settings.fastapi','takeaway.settings.django'],
     author="",
