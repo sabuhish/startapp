@@ -6,9 +6,9 @@ with open("README.md", "r") as fh:
 
 setup(
     name="startapp",
-    version="0.1.3.8e",
+    version="0.1.4.28",
     include_package_data=True,
-    packages=find_packages(),
+    packages=['takeaway', 'takeaway.script','takeaway.core.utils','takeaway.core','takeaway.settings','takeaway.controllers','takeaway.settings.flask','takeaway.settings.fastapi','takeaway.settings.django'],
     author="",
     author_email="",
     description="Simple startapp for fastapi flask  and django",
@@ -24,7 +24,7 @@ setup(
     },
     entry_points="""
         [console_scripts]
-        startapp=startapp.takeaway.script.order:starting
+        startapp=takeaway.script.order:cli
     """,
     # entry_points={
     #     'console_scripts': [

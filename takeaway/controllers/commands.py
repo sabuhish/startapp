@@ -6,7 +6,7 @@ class Operation:
     def __init__(self,app,folder_name):
         self.app = app
         self.folder_name = folder_name
-        self.program = "order.py"
+        self.program = "takeaway"
         self.issue_url = "https://github.com/marlin-dev/startapp"
         self.PR = "https://github.com/marlin-dev/startapp/pulls"
 

@@ -7,7 +7,6 @@ from takeaway.settings.fastapi.readme import  readme
 from takeaway.settings.fastapi.container import  container
 from takeaway.settings.fastapi.env import  env
 from takeaway.settings.fastapi.gitignore import  gitignore
-from takeaway.settings.fastapi.gitlab_ci import  Gitlab
 from takeaway.settings.fastapi.pipfile import  pipfile
 from takeaway.settings.fastapi.piplock import  piplock
 from takeaway.settings.fastapi.prestart import  prestart
@@ -87,7 +86,6 @@ class FastApiApp():
         self.file_create(self.root_directory,"prestart.sh",prestart)
         self.file_create(self.root_directory,"README.md",readme)
         self.file_create(self.root_directory,".env",env)
-        self.file_create(self.root_directory,"gitlab.yaml",Gitlab)
         self.file_create(self.root_directory,"requirements.txt",requirements)
         self.file_create(self.root_directory,"container.sh",container)
         self.file_create(self.root_directory,"start.sh",fastapistart)
