@@ -1,14 +1,15 @@
 
 import  click
-from takeaway.core.utils.version import  print_version
+from takeaway.core.utils.version import  get_version
 import math
 import random
 import time
 from takeaway.controllers.commands import  execution
+
 @click.group()
 def cli():
     """Takeaway group Cli"""
-    pass
+    
 
 @cli.command()
 def clear():
@@ -19,7 +20,7 @@ def clear():
 
 @cli.command(help='😄 simple boilerplate ready for development')
 @click.option('--app','-a',type=click.Choice(['fastapi', 'flask','django'], case_sensitive=True), prompt='Choose one of the application',show_default=True,confirmation_prompt="confirm",default='fastapi',required=True, help='the app name')
-@click.option('--version',"-v",metavar='  version of program', is_flag=False, callback=print_version,
+@click.option('--version',"-v",metavar='  version of program', is_flag=False, callback=get_version,
               expose_value=False, is_eager=True)
 @click.option('--name',"-n",metavar='     the name of yor app',prompt='Name for your app',show_default=True,default='myproject',required=True, help='the app name')
 
@@ -48,4 +49,4 @@ def starting(app,name,count=4000):
     clear()
 
 
-starting()
+# starting()
