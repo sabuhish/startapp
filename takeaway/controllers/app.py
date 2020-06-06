@@ -1,7 +1,28 @@
 # from .management import  BaseComand
 import  os
-from takeaway.settings.fastapi.docker import  Dockerfile
 from takeaway.settings.fastapi.requirements import  requirements
+from takeaway.settings.fastapi.docker import  Dockerfile
+from takeaway.settings.fastapi.readme import  readme
+from takeaway.settings.fastapi.container import  container
+from takeaway.settings.fastapi.env import  env
+from takeaway.settings.fastapi.gitignore import  gitignore
+from takeaway.settings.fastapi.gitlab_ci import  Gitlab
+from takeaway.settings.fastapi.pipfile import  pipfile
+from takeaway.settings.fastapi.piplock import  piplock
+from takeaway.settings.fastapi.prestart import  prestart
+from takeaway.settings.fastapi.start import  fastapistart
+from takeaway.settings.fastapi.controller import  controller
+from takeaway.settings.fastapi.dbsetup import  dbsetup
+from takeaway.settings.fastapi.extension import  extension
+from takeaway.settings.fastapi.factories import  factories
+from takeaway.settings.fastapi.helpers import  helper
+from takeaway.settings.fastapi.main import  main
+from takeaway.settings.fastapi.models import  model
+from takeaway.settings.fastapi.pipfile import  pipfile
+from takeaway.settings.fastapi.piplock import  piplock
+from takeaway.settings.fastapi.readme import  readme
+from takeaway.settings.fastapi.schemas import  schema
+from takeaway.settings.fastapi.settings import  setting,devsetting,prodsettings
 
 
 from takeaway.settings.flask import  docker
@@ -42,7 +63,6 @@ class FastApiApp():
         '''This will initilaze the boilerplate of the project'''
 
         self.root_folder_create()
-
         
         os.makedirs(self.core)
         os.makedirs(self.settings)
@@ -52,7 +72,6 @@ class FastApiApp():
         os.makedirs(self.data)
         os.makedirs(self.utils)
 
-
         self.create_init_file(self.core)
         self.create_init_file(self.settings)
         self.create_init_file(self.app_folder)
@@ -61,10 +80,34 @@ class FastApiApp():
         self.create_init_file(self.utils)
 
         self.file_create(self.root_directory,"Dockerfile",Dockerfile)
-    #    self.file_create()
-    #    self.file_create()
-    #    self.file_create()
-    #    self.file_create()
+        self.file_create(self.root_directory,".gitignore",gitignore)
+        self.file_create(self.root_directory,"Pipfile", pipfile)
+        self.file_create(self.root_directory,"Pipfile.lock",piplock)
+        self.file_create(self.root_directory,"prestart.sh",prestart)
+        self.file_create(self.root_directory,"README.md",readme)
+        self.file_create(self.root_directory,".env",env)
+        self.file_create(self.root_directory,"gitlab.yaml",Gitlab)
+        self.file_create(self.root_directory,"requirements.txt",requirements)
+        self.file_create(self.root_directory,"container.sh",container)
+        self.file_create(self.root_directory,"start.sh",fastapistart)
+
+        self.file_create(self.core,"factories.py",factories)
+        self.file_create(self.core,"extensions.py",extension)
+        self.file_create(self.core,"dbsetup.py",dbsetup)
+
+        self.file_create(self.settings,"devsettings.py",devsetting)
+        self.file_create(self.settings,"prodsettings.py",prodsettings)
+        self.file_create(self.settings,"settings.py",setting)
+        self.file_create(self.settings,"requirements.txt",requirements)
+
+        self.file_create(self.app_folder,"main.py",main)
+
+        self.file_create(self.controller,"controller.py",controller)
+        self.file_create(self.controller,"schemas.py",schema)
+        
+        self.file_create(self.data,"models.py",model)
+        self.file_create(self.utils,"helpers.py",helper)
+
 
     def create_init_file(self,directory):
 
