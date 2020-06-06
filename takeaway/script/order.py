@@ -23,7 +23,6 @@ def clear():
 @click.option('--version',"-v",metavar='  version of program', is_flag=False, callback=get_version,
               expose_value=False, is_eager=True)
 @click.option('--name',"-n",metavar='     the name of yor app',prompt='Name for your app',show_default=True,default='myproject',required=True, help='the app name')
-
 def starting(app,name,count=4000):
     click.echo(click.style('Starting app %s at directory %s!' % (app,name), fg='green'))
     click.progressbar(iterable="8", length=None, label=None, show_eta=True, show_percent=None, show_pos=False, item_show_func=None, fill_char='#', empty_char='-', bar_template='%(label)s [%(bar)s] %(info)s', info_sep=' ', width=36, file=None, color=None)
@@ -49,4 +48,7 @@ def starting(app,name,count=4000):
     clear()
 
 
+if __name__ == '__main__':
+    starting()
+    
 # starting()
