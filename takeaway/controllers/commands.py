@@ -52,6 +52,7 @@ class Operation:
     def execute(self):
         '''Main execution function'''
         self.check_file()
+        
         comand = BaseComand(self.app,self.folder_name)
         comand.start()
         self.thanks_using()

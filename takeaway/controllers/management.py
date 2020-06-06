@@ -1,26 +1,25 @@
-
-# from .commands import  Operation
+from .app import  FastApiApp, FlaskApp, DjangoApp
 
 class BaseComand:
 
     def __init__(self,app,folder_name):
         self.app = app
         self.folder_name = folder_name
-
+        
     
-    def fastapi_execution(self):
-        pass
-
-
-    
-    def flask_execution(self):
-        pass
-
-    
-    def django_execution(self):
-        pass
-
-
     def start(self):
-        pass
+        if self.app == "fastapi":
 
+            app = FastApiApp(self.app, self.folder_name)
+            app.start()
+
+        elif self.app == "flask":
+            
+            app = FlaskApp()
+            app.start()
+
+
+        elif self.app == "django":
+            
+            app = DjangoApp()
+            app.start()
