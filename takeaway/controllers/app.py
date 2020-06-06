@@ -111,6 +111,28 @@ class FastApiApp():
 
         self.activate_pipenv()
         self.install_dependencies()
+        self.ending()
+
+    def ending(self):
+        print(f"👨‍💻{self.app} is ready to go! ✅ 🥳 🎉 😋 ")
+        print("⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️")
+        print(f'❗cd {self.folder_name}')
+        print("❗pipenv shell")
+        print("❗pip install -r requirements.txt")
+     
+        # text = [
+        #     "",
+        #     "%s  is ready to go!" % self.app,
+        #     "",
+        #     "cd %s " % self.folder_name,
+        #     "",
+        #     "pipenv shell",
+        #     "",
+        #     "pip install -r requirements.txt"
+        #     ""
+        # ]
+
+        # sys.stdout.write("\n".join(text))
 
     def create_init_file(self,directory):
 
@@ -122,40 +144,33 @@ class FastApiApp():
 
     def activate_pipenv(self):
         '''This will activate pipenv'''
-        # pass
+        #todo may be removed next future
+
+        pass
+
         # install = 'pip install -r requirements.txt'
         
         # script_path = os.path.dirname(os.path.realpath(self.root_directory))
         # print("sad",script_path)
         # pa = script_path +"/"+ self.root_directory
         
-        script_path = os.path.dirname(os.path.realpath(self.root_directory))
-        print("sad",script_path)
-        pa = script_path +"/"+ self.root_directory
-        print(pa)
-        path = os.chdir(pa)
-        # os.chdir(pa)
-        # # os.chdir(self.root_directory)
-        # activate = 'pipenv shell'
-        print(path)
-        # subprocess.call(f"cd {pa}", shell=True)
+        # script_path = os.path.dirname(os.path.realpath(self.root_directory))
+        # print("sad",script_path)
+        # pa = script_path +"/"+ self.root_directory
+        # print(pa)
+        # path = os.chdir(pa)
+        # # os.chdir(pa)
+        # # # os.chdir(self.root_directory)
+        # # activate = 'pipenv shell'
+        # print(path)
+        # # subprocess.call(f"cd {pa}", shell=True)
 
     def install_dependencies(self):
-        pass
-    
-        # '''This will install all dependencies the app require'''
-
-        # install = 'pip install -r requirements.txt'
         
-        # script_path = os.path.dirname(os.path.realpath(self.root_directory))
-        # print("sad",script_path)
-        # pa = script_path +"/"+ self.root_directory
-
-        # os.chdir(pa)
-
-
-
-        # subprocess.call(install, shell=True)
+    
+        '''This will install all dependencies the app require'''
+        #todo may be removed next future
+        pass
 
 
 

@@ -30,13 +30,13 @@ def colordemo(app):
               expose_value=False, is_eager=True)
 @click.option('--name',"-n",metavar='     the name of yor app',prompt='Name for your project',show_default=True,default='myproject',required=True, help='The app name')
 
-def starting(app,name,count=8000):
-    click.echo(click.style('Starting app %s!' % app,fg='green'))
-    click.echo(click.style('Starting name %s!' % name,fg='green'))
+def starting(app,name,count=5000):
+    click.echo(click.style('Starting app %s at directory %s!' % (app,name), fg='green'))
+    # click.echo(click.style('Starting name %s!' % name,fg='green'))
     click.progressbar(iterable="8", length=None, label=None, show_eta=True, show_percent=None, show_pos=False, item_show_func=None, fill_char='#', empty_char='-', bar_template='%(label)s [%(bar)s] %(info)s', info_sep=' ', width=36, file=None, color=None)
     items = range(count)
     def process_slowly(item):
-        time.sleep(0.002 * random.random())
+        time.sleep(0.001 * random.random())
     def filter(items):
         for item in items:
             if random.random() > 0.3:
