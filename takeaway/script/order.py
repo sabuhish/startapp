@@ -34,26 +34,26 @@ def starting(app,name,count=8000):
     click.echo(click.style('Starting app %s!' % app,fg='green'))
     click.echo(click.style('Starting name %s!' % name,fg='green'))
     click.progressbar(iterable="8", length=None, label=None, show_eta=True, show_percent=None, show_pos=False, item_show_func=None, fill_char='#', empty_char='-', bar_template='%(label)s [%(bar)s] %(info)s', info_sep=' ', width=36, file=None, color=None)
-    # click.echo(click.style('Clearing!', blink=True))
-    # click.clear()
-    # click.echo(click.style('Some things', reverse=True, fg='cyan'))
-    # items = range(count)
-    # def process_slowly(item):
-    #     time.sleep(0.002 * random.random())
-    # def filter(items):
-    #     for item in items:
-    #         if random.random() > 0.3:
-    #             yield item
+    items = range(count)
+    def process_slowly(item):
+        time.sleep(0.002 * random.random())
+    def filter(items):
+        for item in items:
+            if random.random() > 0.3:
+                yield item
 
-    # with click.progressbar(
-    #     items, label=f"Processing {app}", fill_char=click.style("#", fg="green")
-    # ) as bar:
-    #     for item in bar:
-    #         process_slowly(item)
+    with click.progressbar(
+        items, label=f"Processing {app}", fill_char=click.style("#", fg="green")
+    ) as bar:
+        for item in bar:
+            process_slowly(item)
 
-    # colordemo()
+
     execution(app,name)
-    # clear()
+    click.echo(click.style('Clearing!', blink=True,fg="red"))
+
+    time.sleep(3)
+    clear()
 
 
 starting()

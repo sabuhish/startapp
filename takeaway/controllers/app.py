@@ -1,5 +1,6 @@
 # from .management import  BaseComand
 import  os
+import subprocess
 from takeaway.settings.fastapi.requirements import  requirements
 from takeaway.settings.fastapi.docker import  Dockerfile
 from takeaway.settings.fastapi.readme import  readme
@@ -108,6 +109,8 @@ class FastApiApp():
         self.file_create(self.data,"models.py",model)
         self.file_create(self.utils,"helpers.py",helper)
 
+        self.activate_pipenv()
+        self.install_dependencies()
 
     def create_init_file(self,directory):
 
@@ -119,16 +122,42 @@ class FastApiApp():
 
     def activate_pipenv(self):
         '''This will activate pipenv'''
-
-        pass
+        # pass
+        # install = 'pip install -r requirements.txt'
+        
+        # script_path = os.path.dirname(os.path.realpath(self.root_directory))
+        # print("sad",script_path)
+        # pa = script_path +"/"+ self.root_directory
+        
+        script_path = os.path.dirname(os.path.realpath(self.root_directory))
+        print("sad",script_path)
+        pa = script_path +"/"+ self.root_directory
+        print(pa)
+        path = os.chdir(pa)
+        # os.chdir(pa)
+        # # os.chdir(self.root_directory)
+        # activate = 'pipenv shell'
+        print(path)
+        # subprocess.call(f"cd {pa}", shell=True)
 
     def install_dependencies(self):
-    
-        '''This will install all dependencies the app require'''
         pass
-
-
     
+        # '''This will install all dependencies the app require'''
+
+        # install = 'pip install -r requirements.txt'
+        
+        # script_path = os.path.dirname(os.path.realpath(self.root_directory))
+        # print("sad",script_path)
+        # pa = script_path +"/"+ self.root_directory
+
+        # os.chdir(pa)
+
+
+
+        # subprocess.call(install, shell=True)
+
+
 
 
 
