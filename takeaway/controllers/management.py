@@ -1,5 +1,5 @@
 from .app import  FastApiApp, FlaskApp, DjangoApp
-
+import sys
 class BaseComand:
 
     def __init__(self,app,folder_name):
@@ -20,6 +20,9 @@ class BaseComand:
 
 
         elif self.app == "django":
+            print("")
+            print("😭 Error: Django is not ready yet")
+            sys.exit(1)
             
-            app = DjangoApp()
+            app = DjangoApp(self.app, self.folder_name)
             app.start()

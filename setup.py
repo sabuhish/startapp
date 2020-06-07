@@ -1,12 +1,12 @@
 from setuptools import setup, find_packages
 # version = __import__("takeaway").__version__
-
+from takeaway.core.utils.version import  VERSION
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
     name="startapp",
-    version="0.1.5.1",
+    version=VERSION,
     include_package_data=True,
     packages=['takeaway', 'takeaway.script','takeaway.core.utils','takeaway.core','takeaway.settings','takeaway.controllers','takeaway.settings.flask','takeaway.settings.fastapi','takeaway.settings.django'],
     author="",
