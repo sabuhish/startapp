@@ -15,7 +15,7 @@ class BaseComand:
 
         elif self.app == "flask":
             
-            app = FlaskApp()
+            app = FlaskApp(self.app, self.folder_name)
             app.start()
 
 

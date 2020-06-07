@@ -24,9 +24,17 @@ from takeaway.settings.fastapi.readme import  readme
 from takeaway.settings.fastapi.schemas import  schema
 from takeaway.settings.fastapi.settings import  setting,devsetting,prodsettings
 
+from takeaway.settings.flask.settings import  setting,dev_settings,prod_settings
+from takeaway.settings.flask.app import app
+from takeaway.settings.flask.extension import flask_extension
+from takeaway.settings.flask.models import flask_model
+from takeaway.settings.flask.readme import flask_readme
+from takeaway.settings.flask.requirements import req
+from takeaway.settings.flask.serializer import serilizer
+from takeaway.settings.flask.utils import utils
+from takeaway.settings.flask.app_factory import factory
 
-from takeaway.settings.flask import  docker
-from takeaway.settings.django import  docker
+
 # from .commands import Operation
 # from takeaway.controllers.commands import  Operation
 
@@ -122,7 +130,7 @@ class FastApiApp:
      
     def create_init_file(self,directory):
 
-        with open(f"{directory}/__init__.py", "a") as file:
+        with open(f"{directory}/__init__.py", "w") as file:
             file.write("")
 
 
@@ -168,15 +176,62 @@ class FlaskApp:
     def __init__(self,app,folder_name):
         self.app = app
         self.folder_name = folder_name
+        self.root_directory = f'{self.folder_name}/'
         
-    
+        self.app = f'{self.root_directory}app'
+        self.settings = f'{self.root_directory}settings'
+
+        self.extension = f'{self.root_directory}extension'
+        self.app_init = f'{self.root_directory}app_init'
+
     def start(self):
-        print(self.app)
-        print(self.folder_name)
+        self.create_app_structure()
+
+    def create_app_structure(self):
+        self.root_folder_create()
+
+        os.makedirs(self.app)
+        os.makedirs(self.settings)
+        os.makedirs(self.extension)
+        os.makedirs(self.app_init)
+
+        self.create_init_file(self.app)
+        self.create_init_file(self.app_init)
+        self.create_init_file(self.extension)
+
+        self.file_create(self.root_directory,".gitignore",gitignore)
+        self.file_create(self.root_directory,"README.md",flask_readme)
+        self.file_create(self.root_directory,"requirements.txt",req)   
+
+        self.file_create(self.app,"app.py",app)
+        self.file_create(self.app,"models.py",flask_model)
+        self.file_create(self.app,"serializer.py",serilizer)
+        self.file_create(self.app,"utils.py",utils)
+        self.file_create(self.app_init,"app_factory.py",factory)
+        self.file_create(self.extension,"extension.py",flask_extension)
+
+        self.file_create(self.settings,"devsettings.py",dev_settings)
+        self.file_create(self.settings,"prodsettings.py",prod_settings)
+        self.file_create(self.settings,"settings.py",setting)
 
 
-    def folder_create(self):
-        os.makedirs(self.folder_name)
+
+    def root_folder_create(self):
+        os.makedirs(self.root_directory)
+
+
+
+
+    def file_create(self,directory,filename,content):
+        with open(f"{directory}/{filename}","w") as file:
+            file.write(content.strip())
+
+
+
+    def create_init_file(self,directory):
+
+        with open(f"{directory}/__init__.py", "w") as file:
+            file.write("")
 
 
 

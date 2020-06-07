@@ -1,4 +1,4 @@
-extension ='''
+flask_extension ='''
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from marshmallow import validate,fields,validates_schema
