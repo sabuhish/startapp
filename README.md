@@ -27,7 +27,7 @@ Simple boilerplate ready for development
 startapp  --help 
 
 ```
-- Type  startapp  on terminal press enter, the question will promt on terminal choose accroding to your taste.
+- Type  startapp  on terminal press enter, questions will promt on terminal choose accroding to your taste.
 
 
 ```bash
