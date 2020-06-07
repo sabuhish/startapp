@@ -24,7 +24,7 @@ Simple boilerplate ready for development
 
 ```bash
 
-startapp 
+startapp  --help 
 
 ```
 ```bash
