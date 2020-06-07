@@ -178,7 +178,7 @@ class FlaskApp:
         self.folder_name = folder_name
         self.root_directory = f'{self.folder_name}/'
         
-        self.app = f'{self.root_directory}app'
+        self.app_directory = f'{self.root_directory}app'
         self.settings = f'{self.root_directory}settings'
 
         self.extension = f'{self.root_directory}extension'
@@ -190,12 +190,12 @@ class FlaskApp:
     def create_app_structure(self):
         self.root_folder_create()
 
-        os.makedirs(self.app)
+        os.makedirs(self.app_directory)
         os.makedirs(self.settings)
         os.makedirs(self.extension)
         os.makedirs(self.app_init)
 
-        self.create_init_file(self.app)
+        self.create_init_file(self.app_directory)
         self.create_init_file(self.app_init)
         self.create_init_file(self.extension)
 
@@ -203,10 +203,10 @@ class FlaskApp:
         self.file_create(self.root_directory,"README.md",flask_readme)
         self.file_create(self.root_directory,"requirements.txt",req)   
 
-        self.file_create(self.app,"app.py",app)
-        self.file_create(self.app,"models.py",flask_model)
-        self.file_create(self.app,"serializer.py",serilizer)
-        self.file_create(self.app,"utils.py",utils)
+        self.file_create(self.app_directory,"app.py",app)
+        self.file_create(self.app_directory,"models.py",flask_model)
+        self.file_create(self.app_directory,"serializer.py",serilizer)
+        self.file_create(self.app_directory,"utils.py",utils)
         self.file_create(self.app_init,"app_factory.py",factory)
         self.file_create(self.extension,"extension.py",flask_extension)
 
@@ -214,11 +214,10 @@ class FlaskApp:
         self.file_create(self.settings,"prodsettings.py",prod_settings)
         self.file_create(self.settings,"settings.py",setting)
 
-
+        self.ending()
 
     def root_folder_create(self):
         os.makedirs(self.root_directory)
-
 
 
 
@@ -234,6 +233,12 @@ class FlaskApp:
             file.write("")
 
 
+    def ending(self):
+        print(f"👨‍💻{self.app} is ready to go! ✅ 🥳 🎉 😋 ")
+        print("⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️")
+        print(f'❗cd {self.folder_name}')
+        print("❗source .venv/bin/activate")
+        print("❗pip install -r requirements.txt")
 
 
 

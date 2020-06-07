@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="startapp",
-    version="0.1.4.31",
+    version="0.1.5.0",
     include_package_data=True,
     packages=['takeaway', 'takeaway.script','takeaway.core.utils','takeaway.core','takeaway.settings','takeaway.controllers','takeaway.settings.flask','takeaway.settings.fastapi','takeaway.settings.django'],
     author="",
@@ -19,19 +19,10 @@ setup(
     install_requires=[
         "click"
     ],
-    extras_require={
-        "prompt_toolkit": ["prompt_toolkit == 1.0.14"]
-    },
     entry_points="""
         [console_scripts]
         startapp=takeaway.script.order:cli
     """,
-    # entry_points={
-    #     'console_scripts': [
-    #         'startapp=takeaway.script.order:cli
-    #     ]
-    # },
-
 )
 
 
