@@ -26,13 +26,15 @@ Simple boilerplate ready for development
 
 startapp  --help 
 
-type `startapp` pres enter the question will promt on terminal choose accroding to your taste
 
 
 ```
+- type  startapp  on terminal press enter,. the question will promt on terminal choose accroding to your taste.
+
+
 ```bash
 
-After installation do the followings accrodingly: 
+After choice do the followings accrodingly: 
 
 for fastapi:
 
