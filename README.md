@@ -26,8 +26,6 @@ Simple boilerplate ready for development
 
 startapp  --help 
 
-
-
 ```
 - Type  startapp  on terminal press enter, the question will promt on terminal choose accroding to your taste.
 
