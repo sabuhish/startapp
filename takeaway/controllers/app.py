@@ -27,9 +27,10 @@ from takeaway.settings.fastapi.settings import  setting,devsetting,prodsettings
 
 from takeaway.settings.flask import  docker
 from takeaway.settings.django import  docker
+# from .commands import Operation
+# from takeaway.controllers.commands import  Operation
 
-
-class FastApiApp():
+class FastApiApp:
     def __init__(self,app,folder_name):
 
         self.app = app
@@ -118,20 +119,7 @@ class FastApiApp():
         print("❗pipenv shell")
         print("❗pip install -r requirements.txt")
      
-        # text = [
-        #     "",
-        #     "%s  is ready to go!" % self.app,
-        #     "",
-        #     "cd %s " % self.folder_name,
-        #     "",
-        #     "pipenv shell",
-        #     "",
-        #     "pip install -r requirements.txt"
-        #     ""
-        # ]
-
-        # sys.stdout.write("\n".join(text))
-
+     
     def create_init_file(self,directory):
 
         with open(f"{directory}/__init__.py", "a") as file:

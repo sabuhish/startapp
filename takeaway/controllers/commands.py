@@ -1,7 +1,7 @@
 import os
 import sys
 import string
-from .management import BaseComand
+from  .management import BaseComand
 class Operation:
     def __init__(self,app,folder_name):
         self.app = app
@@ -46,7 +46,7 @@ class Operation:
         ]
 
         sys.stdout.write("\n".join(text))
-        # sys.exit(1)
+       
 
 
     def execute(self):
@@ -58,11 +58,5 @@ class Operation:
         self.thanks_using()
 
 
-
-
-
-def execution(app,folder_name):
-    management  = Operation(app,folder_name)
-    management.execute()
 
 

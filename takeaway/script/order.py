@@ -4,7 +4,7 @@ from takeaway.core.utils.version import  get_version
 import math
 import random
 import time
-from takeaway.controllers.commands import  execution
+from takeaway.controllers.commands import  Operation
 
 @click.group()
 def cli():
@@ -41,7 +41,8 @@ def cli(app,name,count=4000):
             process_slowly(item)
 
 
-    execution(app,name)
+    management = Operation(app,name)
+    management.execute()
     click.echo(click.style('Clearing!', blink=True,fg="red"))
 
     time.sleep(5)
@@ -51,4 +52,4 @@ def cli(app,name,count=4000):
 # if __name__ == '__main__':
 #     starting()
 
-# starting()
+cli()
