@@ -5,10 +5,12 @@
 
 # StartApp 
 
-simple boilerplate ready for development 
+Simple boilerplate ready for development 
 
 ## Notes
-- Currently supported for  frameworks:  FastAPi, Flask, Django
+- Currently supported  frameworks are:  FastApi, Flask
+
+- Django coming soon...
 
 
 ### Installation ###
@@ -24,12 +26,16 @@ simple boilerplate ready for development
 
 startapp 
 
+```
+```bash
+
 for fastapi:
 
 
-for framework flask:
+for flask:
 
 source .venv/bin/activate
+
 export FLASK_APP=app.app
 
 export settings=dev
@@ -44,3 +50,5 @@ Linux, MacOS
 # Contributing
 Fell free to open issue and send pull request.
 
+
+### startapp  supports Python >= 3.6
