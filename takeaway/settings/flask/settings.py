@@ -1,4 +1,4 @@
-setting ='''
+flask_setting ='''
 from flask_env import MetaFlaskEnv
 import os
 

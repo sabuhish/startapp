@@ -31,10 +31,19 @@ startapp
 
 for fastapi:
 
+pipenv shell
+
+export APP_SETTINGS=dev
+
+pip install -requirements.txt or pipenv install
+
+uvicorn app.main:app --reload --port 8007
 
 for flask:
 
 source .venv/bin/activate
+
+pip install -requirements.txt
 
 export FLASK_APP=app.app
 

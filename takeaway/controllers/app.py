@@ -24,7 +24,7 @@ from takeaway.settings.fastapi.readme import  readme
 from takeaway.settings.fastapi.schemas import  schema
 from takeaway.settings.fastapi.settings import  setting,devsetting,prodsettings
 
-from takeaway.settings.flask.settings import  setting,dev_settings,prod_settings
+from takeaway.settings.flask.settings import  flask_setting,dev_settings,prod_settings
 from takeaway.settings.flask.app import app
 from takeaway.settings.flask.extension import flask_extension
 from takeaway.settings.flask.models import flask_model
@@ -106,7 +106,6 @@ class FastApiApp:
         self.file_create(self.settings,"devsettings.py",devsetting)
         self.file_create(self.settings,"prodsettings.py",prodsettings)
         self.file_create(self.settings,"settings.py",setting)
-        self.file_create(self.settings,"requirements.txt",requirements)
 
         self.file_create(self.app_folder,"main.py",main)
 
@@ -212,7 +211,7 @@ class FlaskApp:
 
         self.file_create(self.settings,"devsettings.py",dev_settings)
         self.file_create(self.settings,"prodsettings.py",prod_settings)
-        self.file_create(self.settings,"settings.py",setting)
+        self.file_create(self.settings,"settings.py",flask_setting)
 
         self.virtaul_env()
         self.ending()
