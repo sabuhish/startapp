@@ -7,7 +7,8 @@ from logging.config import dictConfig
 
 settings = {
     "dev" : "settings.devsettings.DevelopSettings",
-    "prod" : "settings.prodsettings.ProdSettings"
+    "prod" : "settings.prodsettings.ProdSettings",
+    "test" : "settings.testsettings.TestSettings"
 }
 
 dictConfig({

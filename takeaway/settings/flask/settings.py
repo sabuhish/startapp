@@ -10,6 +10,7 @@ class BaseSettings(metaclass=MetaFlaskEnv):
     SECRET_KEY = os.urandom(32)
     SQLALCHEMY_ECHO = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+
 '''
 
 prod_settings = '''
@@ -39,7 +40,7 @@ class DevelopSettings(BaseSettings):
     
     DEBUG=True
     ENV="development"
-    SQLALCHEMY_DATABASE_URI = f"postgresql:///testdb"
+    SQLALCHEMY_DATABASE_URI = f"postgresql:///streamdb"
     JWT_SECRET_KEY = os.urandom(32)
     JWT_ACCESS_TOKEN_EXPIRES = timedelta(minutes=3)
 

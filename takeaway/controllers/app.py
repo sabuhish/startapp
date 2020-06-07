@@ -181,7 +181,7 @@ class FlaskApp:
         self.app_directory = f'{self.root_directory}app'
         self.settings = f'{self.root_directory}settings'
 
-        self.extension = f'{self.root_directory}extension'
+        self.extensions = f'{self.root_directory}extensions'
         self.app_init = f'{self.root_directory}app_init'
 
     def start(self):
@@ -192,12 +192,12 @@ class FlaskApp:
 
         os.makedirs(self.app_directory)
         os.makedirs(self.settings)
-        os.makedirs(self.extension)
+        os.makedirs(self.extensions)
         os.makedirs(self.app_init)
 
         self.create_init_file(self.app_directory)
         self.create_init_file(self.app_init)
-        self.create_init_file(self.extension)
+        self.create_init_file(self.extensions)
 
         self.file_create(self.root_directory,".gitignore",gitignore)
         self.file_create(self.root_directory,"README.md",flask_readme)
@@ -208,12 +208,13 @@ class FlaskApp:
         self.file_create(self.app_directory,"serializer.py",serilizer)
         self.file_create(self.app_directory,"utils.py",utils)
         self.file_create(self.app_init,"app_factory.py",factory)
-        self.file_create(self.extension,"extension.py",flask_extension)
+        self.file_create(self.extensions,"extension.py",flask_extension)
 
         self.file_create(self.settings,"devsettings.py",dev_settings)
         self.file_create(self.settings,"prodsettings.py",prod_settings)
         self.file_create(self.settings,"settings.py",setting)
 
+        self.virtaul_env()
         self.ending()
 
     def root_folder_create(self):
@@ -229,9 +230,14 @@ class FlaskApp:
 
     def create_init_file(self,directory):
 
-        with open(f"{directory}/__init__.py", "w") as file:
+        with open(f"{directory}/__init__.py", "a") as file:
             file.write("")
 
+
+    def virtaul_env(self):
+        env = f'python3 -m venv {self.root_directory}.venv'
+
+        subprocess.call(env, shell=True)
 
     def ending(self):
         print(f"👨‍💻{self.app} is ready to go! ✅ 🥳 🎉 😋 ")
