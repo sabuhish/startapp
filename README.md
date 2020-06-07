@@ -32,6 +32,8 @@ type `startapp` pres enter the question will promt on terminal choose accroding 
 ```
 ```bash
 
+After installation do the followings accrodingly: 
+
 for fastapi:
 
 pipenv shell
