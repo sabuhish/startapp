@@ -29,12 +29,12 @@ startapp  --help
 
 
 ```
-- type  startapp  on terminal press enter,. the question will promt on terminal choose accroding to your taste.
+- Type  startapp  on terminal press enter, the question will promt on terminal choose accroding to your taste.
 
 
 ```bash
 
-After choice do the followings accrodingly: 
+Right after your choice do the followings accrodingly: 
 
 for fastapi:
 
