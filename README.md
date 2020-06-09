@@ -20,14 +20,14 @@ Simple boilerplate ready for development
 
 
 
-### Installation ###
+###  🔨  Installation ###
 
 ```sh
  $ sudo pip3 install startapp
 ```
 
 
-### Guide
+### 🕹 Guide
 
 ```bash
 
@@ -68,7 +68,7 @@ flask run
 # Supported OS
 Linux, MacOS
 
-# Contributing
+# 🌱 Contributing
 Fell free to open issue and send pull request.
 
 
