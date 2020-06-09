@@ -43,11 +43,12 @@ Right after your choice do the followings accrodingly:
 
 for fastapi:
 
-pipenv shell
+source .venv/bin/activate
 
-export APP_SETTINGS=dev
 
-pip install -requirements.txt or pipenv install
+export settings=dev
+
+pip install -r requirements.txt 
 
 uvicorn app.main:app --reload --port 8007
 
@@ -55,7 +56,7 @@ for flask:
 
 source .venv/bin/activate
 
-pip install -requirements.txt
+pip install -r requirements.txt
 
 export FLASK_APP=app.app
 
