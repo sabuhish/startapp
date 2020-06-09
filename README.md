@@ -17,7 +17,7 @@ Simple boilerplate ready for development
 ## Notes
 - Currently supported  frameworks are:  FastApi, Flask
 
-- Django coming soon...
+
 
 
 ### Installation ###
