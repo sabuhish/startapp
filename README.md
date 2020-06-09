@@ -7,7 +7,7 @@
 
 Simple boilerplate ready for development 
 
-[![MIT licensed](https://img.shields.io/github/license/marlin-dev/startapp)](https://raw.githubusercontent.com/marlin-dev/startapp/master/LICENSE)
+[![MIT licensed](https://img.shields.io/github/license/marlin-dev/startapp)](https://github.com/marlin-dev/startapp/blob/master/LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/marlin-dev/startapp.svg)](https://github.com/marlin-dev/startapp/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/marlin-dev/startapp.svg)](https://github.com/marlin-dev/startapp/network)
 [![GitHub issues](https://img.shields.io/github/issues-raw/marlin-dev/startapp)](https://github.com/marlin-dev/startapp/issues)
