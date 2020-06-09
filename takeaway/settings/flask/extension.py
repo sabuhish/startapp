@@ -1,4 +1,4 @@
-flask_extension ='''
+flask_extension = """
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from marshmallow import validate,fields,validates_schema
@@ -13,4 +13,5 @@ migrate = Migrate()
 jwt = JWTManager()
 
 Model,Column,String,Integer,DateTime,ForeignKey,relationship = db.Model,db.Column,db.String,db.Integer,db.DateTime,db.ForeignKey,db.relationship
-'''
+"""
+

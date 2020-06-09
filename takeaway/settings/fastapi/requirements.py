@@ -1,11 +1,9 @@
-requirements = '''
+requirements = """
 aiocontextvars==0.2.2
 alembic==1.3.2
 astroid==2.3.3
 asyncpg==0.20.1
 attrs==19.3.0
-boto3==1.12.39
-botocore==1.15.39
 bson==0.5.8
 certifi==2019.11.28
 chardet==3.0.4
@@ -30,14 +28,12 @@ lazy-object-proxy==1.4.3
 Mako==1.1.0
 MarkupSafe==1.1.1
 mccabe==0.6.1
-motor==2.1.0
 outcome==1.0.1
 pipenv==2018.11.26
 prometheus-client==0.7.1
-psycopg2-binary==2.8.2
+{}
 pydantic==1.3
 pylint==2.4.4
-pymongo==3.10.1
 python-dateutil==2.8.1
 python-editor==1.0.4
 Represent==1.6.0
@@ -60,4 +56,4 @@ virtualenv-clone==0.5.3
 websockets==8.1
 wrapt==1.11.2
 
-'''
+"""

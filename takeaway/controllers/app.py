@@ -7,8 +7,6 @@ from takeaway.settings.fastapi.readme import readme
 from takeaway.settings.fastapi.container import container
 from takeaway.settings.fastapi.env import env
 from takeaway.settings.fastapi.gitignore import gitignore
-from takeaway.settings.fastapi.pipfile import pipfile
-from takeaway.settings.fastapi.piplock import piplock
 from takeaway.settings.fastapi.prestart import prestart
 from takeaway.settings.fastapi.start import fastapistart
 from takeaway.settings.fastapi.controller import controller
@@ -18,8 +16,6 @@ from takeaway.settings.fastapi.factories import factories
 from takeaway.settings.fastapi.helpers import helper
 from takeaway.settings.fastapi.main import main
 from takeaway.settings.fastapi.models import model
-from takeaway.settings.fastapi.pipfile import pipfile
-from takeaway.settings.fastapi.piplock import piplock
 from takeaway.settings.fastapi.readme import readme
 from takeaway.settings.fastapi.schemas import schema
 from takeaway.settings.fastapi.settings import setting, devsetting, prodsettings
@@ -41,7 +37,7 @@ from takeaway.settings.flask.app_factory import factory
 
 class FastApiApp:
     def __init__(self, app, folder_name, db_driver, db_name):
-
+        print(db_driver)
         self.app = app
         self.folder_name = folder_name
         self.root_directory = f"{self.folder_name}/"
@@ -89,12 +85,22 @@ class FastApiApp:
 
         self.file_create(self.root_directory, "Dockerfile", Dockerfile)
         self.file_create(self.root_directory, ".gitignore", gitignore)
-        self.file_create(self.root_directory, "Pipfile", pipfile)
-        self.file_create(self.root_directory, "Pipfile.lock", piplock)
-        self.file_create(self.root_directory, "prestart.sh", prestart)
+        self.file_create(
+            self.root_directory,
+            "prestart.sh",
+            prestart.replace("db_driver", self.db_driver),
+        )
         self.file_create(self.root_directory, "README.md", readme)
         self.file_create(self.root_directory, ".env", env)
-        self.file_create(self.root_directory, "requirements.txt", requirements)
+        self.file_create(
+            self.root_directory,
+            "requirements.txt",
+            requirements.format(
+                "mysql-connector-python>=1.2.5"
+                if self.db_driver == "mysql"
+                else "psycopg2>=2.8.5"
+            ),
+        )
         self.file_create(self.root_directory, "container.sh", container)
         self.file_create(self.root_directory, "start.sh", fastapistart)
 
@@ -171,7 +177,7 @@ class FastApiApp:
 
 
 class FlaskApp:
-    def __init__(self, app, folder_name, db_name, db_driver):
+    def __init__(self, app, folder_name, db_driver, db_name):
         self.app = app
         self.folder_name = folder_name
         self.root_directory = f"{self.folder_name}/"
@@ -200,7 +206,15 @@ class FlaskApp:
 
         self.file_create(self.root_directory, ".gitignore", gitignore)
         self.file_create(self.root_directory, "README.md", flask_readme)
-        self.file_create(self.root_directory, "requirements.txt", req)
+        self.file_create(
+            self.root_directory,
+            "requirements.txt",
+            req.format(
+                "mysql-connector-python>=1.2.5"
+                if self.db_driver == "mysql"
+                else "psycopg2>=2.8.5"
+            ),
+        )
 
         self.file_create(self.app_directory, "app.py", app)
         self.file_create(self.app_directory, "models.py", flask_model)
@@ -208,6 +222,12 @@ class FlaskApp:
         self.file_create(self.app_directory, "utils.py", utils)
         self.file_create(self.app_init, "app_factory.py", factory)
         self.file_create(self.extensions, "extension.py", flask_extension)
+        self.file_create(
+            self.root_directory,
+            "prestart.sh",
+            prestart.replace("db_driver", self.db_driver),
+        )
+        self.file_create(self.root_directory, "README.md", readme)
 
         self.file_create(
             self.settings,
@@ -239,9 +259,7 @@ class FlaskApp:
             file.write("")
 
     def virtaul_env(self):
-        print(self.root_directory)
         env = f"python3 -m venv {self.root_directory}.venv"
-
         subprocess.call(env, shell=True)
 
     def ending(self):
@@ -250,8 +268,3 @@ class FlaskApp:
         print(f"❗cd {self.folder_name}")
         print("❗source .venv/bin/activate")
         print("❗pip install -r requirements.txt")
-        # os.system(f"source {self.root_directory}.venv/bin/activate")
-        # env_path = f"{self.root_directory}.venv/bin/activate"
-        # subprocess.run(f"chmod +x {env_path}", check=True)
-
-        # subprocess.run(env_path, check=True)

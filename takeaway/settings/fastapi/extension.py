@@ -6,9 +6,9 @@ from ssl import create_default_context
 if not settings.DEBUG:
     ssl_object =create_default_context(cafile=settings.SSL_CERT_FILE)
 
-    db: MetaData = Gino(dsn=settings.DATABASE_URL,ssl=ssl_object,pool_min_size=3,pool_max_size=20,retry_limit=1,retry_interval=1)
+    db: Gino = Gino(dsn=settings.DATABASE_URL,ssl=ssl_object,pool_min_size=3,pool_max_size=20,retry_limit=1,retry_interval=1)
 else:
 
-    db: MetaData = Gino(dsn=settings.DATABASE_URL)
+    db: Gino = Gino(dsn=settings.DATABASE_URL)
 
 """
