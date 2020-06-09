@@ -18,7 +18,7 @@ def clear():
 
 
 @cli.command(help='😄 simple boilerplate ready for development')
-@click.option('--app','-a',type=click.Choice(['fastapi', 'flask','django'], case_sensitive=True), prompt='Choose one of the application',show_default=True,default='fastapi',required=True, help='the app name')
+@click.option('--app','-a',type=click.Choice(['fastapi', 'flask'], case_sensitive=True), prompt='Choose one of the application',show_default=True,default='fastapi',required=True, help='the app name')
 @click.option('--db_driver','-dd',type=click.Choice(['mysql', 'postgresql'], case_sensitive=True), prompt='Choose one of the database drivers',show_default=True,default='postgresql',required=True, help='the db driver name')
 @click.option('--name',"-n",metavar='the name of yor app',prompt='Name for your app',show_default=True,default='myproject',required=True, help='the app name')
 @click.option('--db_name',"-d",metavar='the name of yor db',prompt='Name for your db',show_default=True,default='testdb',required=True, help='the db name')
