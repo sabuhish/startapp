@@ -1,4 +1,4 @@
-req ='''
+req = """
 alembic==1.4.2
 astroid==2.3.3
 bandit==1.6.2
@@ -23,8 +23,7 @@ marshmallow-sqlalchemy==0.22.3
 mccabe==0.6.1
 passlib==1.7.2
 pbr==5.4.5
-pkg-resources==0.0.0
-psycopg2==2.8.5
+{}
 PyJWT==1.7.1
 pylint==2.4.4
 python-dateutil==2.8.1
@@ -39,4 +38,4 @@ Werkzeug==1.0.1
 wrapt==1.11.2
 
 
-'''
+"""

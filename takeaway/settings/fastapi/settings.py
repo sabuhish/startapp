@@ -21,7 +21,7 @@ class DevSettings(BaseConfig):
     
     DATABASE_URL = config(
         "DATABASE_URL",
-        default="asyncpg:///fastapitest",
+        default="DB_DRIVER:///DB_NAME",
     )   
 '''
 
@@ -43,11 +43,11 @@ class ProdSettings(BaseConfig):
     DB_PORT = config("DB_PORT", cast=str, default="5432")
     DB_NAME = config("DB_NAME", cast=str, default="postgres")
     INCLUDE_SCHEMA=config("INCLUDE_SCHEMA", cast=bool, default=False)
-    
+    SSL_CERT_FILE = config("SSL_PATH",default="/etc/.cert/ca-certificate.crt")
     
     DATABASE_URL = config(
         "DATABASE_URL",
-        default=f"asyncpg://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}?sslmode=require",
+        default=f"DB_DRIVER://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}",
     )
 
 '''

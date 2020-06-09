@@ -18,10 +18,12 @@ def clear():
 
 
 @cli.command(help='😄 simple boilerplate ready for development')
-@click.option('--app','-a',type=click.Choice(['fastapi', 'flask','django'], case_sensitive=True), prompt='Choose one of the application',show_default=True,confirmation_prompt="confirm",default='fastapi',required=True, help='the app name')
-@click.option('--name',"-n",metavar='     the name of yor app',prompt='Name for your app',show_default=True,default='myproject',required=True, help='the app name')
+@click.option('--app','-a',type=click.Choice(['fastapi', 'flask','django'], case_sensitive=True), prompt='Choose one of the application',show_default=True,default='fastapi',required=True, help='the app name')
+@click.option('--db_driver','-dd',type=click.Choice(['mysql', 'postgresql'], case_sensitive=True), prompt='Choose one of the database drivers',show_default=True,default='postgresql',required=True, help='the db driver name')
+@click.option('--name',"-n",metavar='the name of yor app',prompt='Name for your app',show_default=True,default='myproject',required=True, help='the app name')
+@click.option('--db_name',"-d",metavar='the name of yor db',prompt='Name for your db',show_default=True,default='testdb',required=True, help='the db name')
 @click.version_option(VERSION)
-def cli(app,name,count=4000):
+def cli(app,name,db_driver,db_name,count=4000):
     click.echo(click.style('Starting app %s at directory %s!' % (app,name), fg='green'))
     click.progressbar(iterable="8", length=None, label=None, show_eta=True, show_percent=None, show_pos=False, item_show_func=None, fill_char='#', empty_char='-', bar_template='%(label)s [%(bar)s] %(info)s', info_sep=' ', width=36, file=None, color=None)
     items = range(count)
@@ -39,7 +41,7 @@ def cli(app,name,count=4000):
             process_slowly(item)
 
 
-    management = Operation(app,name)
+    management = Operation(app,name,db_driver,db_name)
     management.execute()
     click.echo(click.style('Clearing!', blink=True,fg="red"))
 
@@ -50,4 +52,4 @@ def cli(app,name,count=4000):
 # if __name__ == '__main__':
 #     starting()
 
-cli()
+# cli()
