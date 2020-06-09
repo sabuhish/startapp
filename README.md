@@ -65,10 +65,10 @@ flask run
 
 ```
 
-# Supported OS
+## Supported OS
 Linux, MacOS
 
-# 🌱 Contributing
+## 🌱 Contributing
 Fell free to open issue and send pull request.
 
 
