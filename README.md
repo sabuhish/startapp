@@ -36,6 +36,8 @@ startapp  --help
 ```
 - Type  startapp  on terminal press enter, questions will promt on terminal choose accroding to your taste.
 
+[![asciicast](https://asciinema.org/a/PuyuQDl1R1OrRkGWU6t5SblHo.svg)](https://asciinema.org/a/PuyuQDl1R1OrRkGWU6t5SblHo)
+
 
 ```bash
 
