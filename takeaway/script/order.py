@@ -5,6 +5,8 @@ import random
 import time
 from takeaway.controllers.commands import  Operation
 from takeaway.core.utils.version import  VERSION
+
+
 @click.group()
 def cli():
     """Takeaway group Cli"""
@@ -27,6 +29,12 @@ def cli(app,name,db_driver,db_name,count=4000):
     click.echo(click.style('Starting app %s at directory %s!' % (app,name), fg='green'))
     click.progressbar(iterable="8", length=None, label=None, show_eta=True, show_percent=None, show_pos=False, item_show_func=None, fill_char='#', empty_char='-', bar_template='%(label)s [%(bar)s] %(info)s', info_sep=' ', width=36, file=None, color=None)
     items = range(count)
+    if click.confirm('Do you have git Repo ?'):
+        
+        git_repo = click.prompt("Repo URL ", type=str)
+    else:
+        git_repo = None
+
     def process_slowly(item):
         time.sleep(0.001 * random.random())
     def filter(items):
@@ -40,16 +48,13 @@ def cli(app,name,db_driver,db_name,count=4000):
         for item in bar:
             process_slowly(item)
 
+  
 
-    management = Operation(app,name,db_driver,db_name)
+    management = Operation(app,name,db_driver,db_name,git_repo)
     management.execute()
-    click.echo(click.style('Clearing!', blink=True,fg="red"))
+    
+   
+    click.echo(click.style('Completed!', blink=True,fg="red"))
 
-    time.sleep(5)
-    clear()
 
 
-# if __name__ == '__main__':
-#     starting()
-
-# cli()

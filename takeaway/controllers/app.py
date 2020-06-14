@@ -1,6 +1,7 @@
 # from .management import  BaseComand
 import os
 import subprocess
+import traceback
 from takeaway.settings.fastapi.requirements import requirements
 from takeaway.settings.fastapi.docker import Dockerfile
 from takeaway.settings.fastapi.readme import readme
@@ -36,7 +37,7 @@ from takeaway.settings.flask.app_factory import factory
 
 
 class FastApiApp:
-    def __init__(self, app, folder_name, db_driver, db_name):
+    def __init__(self, app, folder_name, db_driver, db_name,git_repo):
         print(db_driver)
         self.app = app
         self.folder_name = folder_name
@@ -45,7 +46,7 @@ class FastApiApp:
         self.db_name = db_name
         self.core = f"{self.root_directory}core"
         self.settings = f"{self.core}/settings"
-
+        self.git_repo = git_repo
         self.app_folder = f"{self.root_directory}app"
         self.controllers = f"{self.app_folder}/controllers"
         self.controller = f"{self.controllers}/controller"
@@ -55,6 +56,19 @@ class FastApiApp:
 
     def start(self):
         self.create_app_structure()
+        if self.git_repo:
+            try:
+
+                cmd = "git init" 
+                subprocess.call(cmd, shell=True,cwd=self.root_directory)
+
+                cmd = f"git remote add origin {self.git_repo}"
+            
+                subprocess.call(cmd, shell=True,cwd=self.root_directory)
+
+            except:
+                error = traceback.format_exc()
+                print(error)
 
     def file_create(self, directory, filename, content):
         with open(f"{directory}/{filename}", "w") as file:
@@ -146,29 +160,7 @@ class FastApiApp:
         with open(f"{directory}/__init__.py", "w") as file:
             file.write("")
 
-    def activate_pipenv(self):
-        """This will activate pipenv"""
-        # todo may be removed next future
-
-        pass
-
-        # install = 'pip install -r requirements.txt'
-
-        # script_path = os.path.dirname(os.path.realpath(self.root_directory))
-        # print("sad",script_path)
-        # pa = script_path +"/"+ self.root_directory
-
-        # script_path = os.path.dirname(os.path.realpath(self.root_directory))
-        # print("sad",script_path)
-        # pa = script_path +"/"+ self.root_directory
-        # print(pa)
-        # path = os.chdir(pa)
-        # # os.chdir(pa)
-        # # # os.chdir(self.root_directory)
-        # # activate = 'pipenv shell'
-        # print(path)
-        # # subprocess.call(f"cd {pa}", shell=True)
-
+   
     def install_dependencies(self):
 
         """This will install all dependencies the app require"""
@@ -177,11 +169,12 @@ class FastApiApp:
 
 
 class FlaskApp:
-    def __init__(self, app, folder_name, db_driver, db_name):
+    def __init__(self, app, folder_name, db_driver, db_name,git_repo):
         self.app = app
         self.folder_name = folder_name
         self.root_directory = f"{self.folder_name}/"
 
+        self.git_repo = git_repo
         self.app_directory = f"{self.root_directory}app"
         self.settings = f"{self.root_directory}settings"
         self.db_driver = db_driver
@@ -191,6 +184,19 @@ class FlaskApp:
 
     def start(self):
         self.create_app_structure()
+        if self.git_repo:
+            try:
+
+                cmd = "git init" 
+                subprocess.call(cmd, shell=True,cwd=self.root_directory)
+
+                cmd = f"git remote add origin {self.git_repo}"
+            
+                subprocess.call(cmd, shell=True,cwd=self.root_directory)
+
+            except:
+                error = traceback.format_exc()
+                print(error)
 
     def create_app_structure(self):
         self.root_folder_create()

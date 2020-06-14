@@ -5,12 +5,13 @@ from .management import BaseComand
 
 
 class Operation:
-    def __init__(self, app, folder_name, db_driver, db_name):
+    def __init__(self, app, folder_name, db_driver, db_name,git_repo):
         self.app = app
         self.folder_name = folder_name
         self.program = "takeaway"
         self.db_driver = db_driver
         self.db_name = db_name
+        self.git_repo = git_repo
         self.issue_url = "https://github.com/marlin-dev/startapp"
         self.PR = "https://github.com/marlin-dev/startapp/pulls"
 
@@ -57,6 +58,6 @@ class Operation:
         """Main execution function"""
         self.check_file()
 
-        comand = BaseComand(self.app, self.folder_name, self.db_driver, self.db_name)
+        comand = BaseComand(self.app, self.folder_name, self.db_driver, self.db_name,self.git_repo)
         comand.start()
         self.thanks_using()
