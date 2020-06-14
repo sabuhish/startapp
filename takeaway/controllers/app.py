@@ -144,7 +144,6 @@ class FastApiApp:
         self.file_create(self.data, "models.py", model)
         self.file_create(self.utils, "helpers.py", helper)
 
-        self.activate_pipenv()
         self.install_dependencies()
         self.ending()
 
@@ -160,7 +159,12 @@ class FastApiApp:
         with open(f"{directory}/__init__.py", "w") as file:
             file.write("")
 
-   
+    def activate_pipenv(self):
+        """This will activate pipenv"""
+        # todo may be removed next future
+
+        pass
+
     def install_dependencies(self):
 
         """This will install all dependencies the app require"""
@@ -197,7 +201,7 @@ class FlaskApp:
             except:
                 error = traceback.format_exc()
                 print(error)
-
+                
     def create_app_structure(self):
         self.root_folder_create()
 
