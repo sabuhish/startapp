@@ -12,6 +12,6 @@ ma = Marshmallow()
 migrate = Migrate()
 jwt = JWTManager()
 
-Model,Column,String,Integer,DateTime,ForeignKey,relationship = db.Model,db.Column,db.String,db.Integer,db.DateTime,db.ForeignKey,db.relationship
+
 """
 

@@ -21,15 +21,19 @@ from takeaway.settings.fastapi.readme import readme
 from takeaway.settings.fastapi.schemas import schema
 from takeaway.settings.fastapi.settings import setting, devsetting, prodsettings
 
-from takeaway.settings.flask.settings import flask_setting, dev_settings, prod_settings
+from takeaway.settings.flask.settings import flask_setting, dev_settings, prod_settings, test_settings
 from takeaway.settings.flask.app import app
 from takeaway.settings.flask.extension import flask_extension
+from takeaway.settings.flask.db_conf import db_conf
 from takeaway.settings.flask.models import flask_model
 from takeaway.settings.flask.readme import flask_readme
 from takeaway.settings.flask.requirements import req
 from takeaway.settings.flask.serializer import serilizer
 from takeaway.settings.flask.utils import utils
 from takeaway.settings.flask.app_factory import factory
+from takeaway.settings.flask.test import test
+from takeaway.settings.flask.env import env
+from takeaway.settings.flask.server import server
 
 
 # from .commands import Operation
@@ -173,16 +177,24 @@ class FastApiApp:
 
 
 class FlaskApp:
-    def __init__(self, app, folder_name, db_driver, db_name,git_repo):
+    def __init__(self, app, folder_name, db_driver, db_name, testdb_name, git_repo):
         self.app = app
         self.folder_name = folder_name
         self.root_directory = f"{self.folder_name}/"
 
         self.git_repo = git_repo
-        self.app_directory = f"{self.root_directory}app"
+        self.app_directory = f"{self.root_directory}app/"
+
+        self.controllers_directory = f"{self.app_directory}controllers"
+        self.models_directory = f"{self.app_directory}models"
+        self.serializers_directory = f"{self.app_directory}serializers"
+
+        self.tests = f"{self.root_directory}tests"
+
         self.settings = f"{self.root_directory}settings"
         self.db_driver = db_driver
         self.db_name = db_name
+        self.testdb_name = testdb_name
         self.extensions = f"{self.root_directory}extensions"
         self.app_init = f"{self.root_directory}app_init"
 
@@ -206,6 +218,10 @@ class FlaskApp:
         self.root_folder_create()
 
         os.makedirs(self.app_directory)
+        os.makedirs(self.controllers_directory)
+        os.makedirs(self.models_directory)
+        os.makedirs(self.serializers_directory)
+        os.makedirs(self.tests)
         os.makedirs(self.settings)
         os.makedirs(self.extensions)
         os.makedirs(self.app_init)
@@ -213,6 +229,10 @@ class FlaskApp:
         self.create_init_file(self.app_directory)
         self.create_init_file(self.app_init)
         self.create_init_file(self.extensions)
+        self.create_init_file(self.controllers_directory)
+        self.create_init_file(self.models_directory)
+        self.create_init_file(self.serializers_directory)
+        self.create_init_file(self.tests)
 
         self.file_create(self.root_directory, ".gitignore", gitignore)
         self.file_create(self.root_directory, "README.md", flask_readme)
@@ -226,12 +246,16 @@ class FlaskApp:
             ),
         )
 
-        self.file_create(self.app_directory, "app.py", app)
-        self.file_create(self.app_directory, "models.py", flask_model)
-        self.file_create(self.app_directory, "serializer.py", serilizer)
+        self.file_create(self.controllers_directory, "app.py", app)
+        self.file_create(self.models_directory, "models.py", flask_model)
+        self.file_create(self.serializers_directory, "serializer.py", serilizer)
         self.file_create(self.app_directory, "utils.py", utils)
         self.file_create(self.app_init, "app_factory.py", factory)
         self.file_create(self.extensions, "extension.py", flask_extension)
+        self.file_create(self.extensions, "db_conf.py", db_conf)
+        self.file_create(self.tests, "test.py", test )
+        self.file_create(self.root_directory, ".env", env)
+        self.file_create(self.root_directory, "server.py", server)
         self.file_create(
             self.root_directory,
             "prestart.sh",
@@ -250,6 +274,13 @@ class FlaskApp:
             self.settings,
             "prodsettings.py",
             prod_settings.replace("DB_DRIVER", self.db_driver),
+        )
+        self.file_create(
+            self.settings,
+            "testsettings.py",
+            test_settings.replace("DB_DRIVER", self.db_driver).replace(
+                "unittest_db" , self.testdb_name
+            ),
         )
         self.file_create(self.settings, "settings.py", flask_setting)
 

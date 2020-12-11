@@ -36,7 +36,6 @@ startapp  --help
 ```
 - Type  startapp  on terminal press enter, questions will promt on terminal choose accroding to your taste.
 
-[![asciicast](https://asciinema.org/a/PuyuQDl1R1OrRkGWU6t5SblHo.svg)](https://asciinema.org/a/PuyuQDl1R1OrRkGWU6t5SblHo)
 
 
 ```bash
@@ -65,6 +64,87 @@ export FLASK_APP=app.app
 export settings=dev
 
 flask run
+
+```
+Flask Structure
+
+```bash 
+├── app
+│   ├── controllers
+│   │   ├── app.py
+│   │   └── __init__.py
+│   ├── __init__.py
+│   ├── models
+│   │   ├── __init__.py
+│   │   └── models.py
+│   ├── serializers
+│   │   ├── __init__.py
+│   │   └── serializer.py
+│   └── utils.py
+├── app_init
+│   ├── app_factory.py
+│   ├── __init__.py
+│   
+│       
+│       
+├── extensions
+│   ├── db_conf.py
+│   ├── extension.py
+│   ├── __init__.py
+│   
+│       
+│       
+├── prestart.sh
+├
+│   
+├── README.md
+├── requirements.txt
+├── server.py
+├── settings
+│   ├── devsettings.py
+│   ├── prodsettings.py
+│   ├── settings.py
+│   └── testsettings.py
+└── tests
+    ├── __init__.py
+    └── test.py
+
+```
+
+FastApi Structure
+```bash
+├── app
+│   ├── controllers
+│   │   ├── controller
+│   │   │   ├── controller.py
+│   │   │   └── schemas.py
+│   │   └── __init__.py
+│   ├── data
+│   │   ├── __init__.py
+│   │   └── models.py
+│   ├── __init__.py
+│   ├── main.py
+│   └── utils
+│       ├── helpers.py
+│       └── __init__.py
+├── container.sh
+├── core
+│   ├── dbsetup.py
+│   ├── extensions.py
+│   ├── factories.py
+│   ├── __init__.py
+│   └── settings
+│       ├── devsettings.py
+│       ├── __init__.py
+│       ├── prodsettings.py
+│       └── settings.py
+├── Dockerfile
+├── prestart.sh
+├── README.md
+├── req.txt
+├── requirements.txt
+└── start.sh
+
 
 ```
 
